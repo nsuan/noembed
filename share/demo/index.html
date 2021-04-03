@@ -1,0 +1,245 @@
+<html>
+  <head>
+    <title>Noembed - oEmbed everything.</title>
+    <style type="text/css">
+      body {
+        font-family: Helvetica, Arial, sans-serif;
+        background: #fff;
+        color: #222;
+        background: #eefefe;
+      }
+      #container {
+        width: 520px;
+        margin: 30px auto;
+      }
+      code {
+        border: 1px solid #ddd;
+        padding: 0 2px;
+        color: #000;
+        background: #fff;
+      }
+      p {
+        line-height: 1.3em;
+      }
+      span.subhead {
+        font-weight: normal;
+        font-size: 0.8em;
+      }
+      li {
+        line-height: 1.3em;
+      }
+      h1, h2 {
+        color: #000;
+      }
+      h2 {
+        font-size: 1.4em;
+        margin: 1em 0;
+      }
+      h2 {
+        font-weight: normal;
+      }
+      h3 {
+        font-weight: bold;;
+        font-size: 1em;
+      }
+      p#footer {
+        font-size: 0.7em;
+        color: #999;
+        text-align: center;
+        margin-top: 30px;
+        border-top: 1px solid #eee;
+        padding-top: 15px;
+      }
+      pre {
+        width: 100%;
+        overflow: auto;
+        border: 1px solid #ddd;
+        padding: 4px;
+        color: #000;
+        background: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+    <h1>Noembed <span title="DO IT!" class="subhead">&mdash; oEmbed everything.<span></h1>
+    <p>
+      <a href="http://www.oembed.com/">oEmbed</a> is nice. Unfortunately, not everything supports oEmbed. Worse,
+      the sites that <em>do</em> support it don't provide a consistent
+      interface. Noembed provides a single <a href="/embed">url</a> to get embeddable content
+      from a large list of sites, even sites without oEmbed support!
+    </p>
+    <p>
+      Additionally, Noembed guarantees that all responses will have
+      <code>html</code>, <code>title</code>, <code>url</code>,  and
+      <code>provider_name</code> fields. This means fewer special
+      cases spent building up your own HTML.
+    </p>
+    <p>
+      A simple demo is <a href="demo">available here</a>.
+
+    <h2>Usage</h2>
+    <p>
+    Treat Noembed like a regular oEmbed provider, but use any of the <a href="#supported-sites">supported sites</a>
+      for the <code>url</code> parameter. Noembed also supports a <code>callback</code>
+      parameter for JSONP.
+    </p>
+
+    <p>
+      An example request might look like this:
+    </p>
+    <pre>http://noembed.com/embed?url=http%3A//www.youtube.com/watch%3Fv%3DbDOYN-6gdRE&amp;callback=my_embed_function</pre>
+    <p>
+      And the response will look like:
+    </p>
+<pre>
+my_embed_function(
+  {
+    "width" : 425,
+    "author_name" : "schmoyoho",
+    "author_url" : "http://www.youtube.com/user/schmoyoho",
+    "version" : "1.0",
+    "provider_url" : "http://www.youtube.com/",
+    "provider_name" : "YouTube",
+    "thumbnail_width" : 480,
+    "thumbnail_url" : "http://i3.ytimg.com/vi/bDOYN-6gdRE/hqdefault.jpg",
+    "height" : 344,
+    "thumbnail_height" : 360,
+    "html" : "&lt;iframe type='text/html' width='425' height='344' src='http://www.youtube.com/embed/bDOYN-6gdRE' frameborder=0&gt;&lt;/iframe&gt;",
+    "url" : "http://www.youtube.com/watch?v=bDOYN-6gdRE",
+    "type" : "rich",
+    "title" : "Auto-Tune the News #8: dragons. geese. Michael Vick. (ft. T-Pain)"
+  }
+)
+</pre>
+    <p>
+    <em>Note:</em> <a href="http://code.google.com/p/chromium/issues/detail?id=81637">Chrome now blocks insecure scripts from loading on secure sites</a>.
+    So, when using Noembed with JSONP on an <code>https</code> site be sure to use <code>https://noembed.com/embed</code>.
+    </p>
+
+    <a name="supported-sites"></a>
+    <h2>Supported sites</h2>
+
+    <h3>Other</h3>
+    <ul>
+      <li>Amazon</li>
+      <li>iTunes Movie Trailers</li>
+      <li>Ars Technica</li>
+      <li>ASCII Art Farts</li>
+      <li>Bash.org</li>
+      <li>Beer Advocate</li>
+      <li>Clickhole</li>
+      <li>Duffel Blog</li>
+      <li>Facebook</li>
+      <li>GiantBomb</li>
+      <li>Gist</li>
+      <li>Github Commit</li>
+      <li>Gfycat</li>
+      <li>GlobalGiving</li>
+      <li>iHeartRadio</li>
+      <li>IMDB</li>
+      <li>Muki</li>
+      <li>Monoprice</li>
+	    <li>Nooledge</li>
+      <li>Spotify</li>
+      <li>TED</li>
+      <li>The Onion</li>
+      <li>TrailerAddict</li>
+      <li>Twitlonger</li>
+      <li>Twitter</li>
+      <li>Urban Dictionary</li>
+      <li>Vice</li>
+      <li>Vimeo</li>
+      <li>Vine</li>
+      <li>Wikipedia</li>
+      <li>XKCD</li>
+      <li>YouTube</li>
+    </ul>
+    <h3>Existing oEmbed Sites</h3>
+    <ul>
+      <li>Audiomack</li>
+      <li>Clyp</li>
+      <li>Flickr</li>
+      <li>Funny or Die</li>
+      <li>Hulu</li>
+      <li>Qik</li>
+      <li>Rdio</li>
+      <li>SlideShare</li>
+      <li>SoundCloud</li>
+      <li>Spreaker</li>
+      <li>Viddler</li>
+      <li>App.Net</li>
+    </ul>
+    <h3>Image Sites</h3>
+    <ul>
+      <li>CloudApp</li>
+      <li>Dropbox</li>
+      <li>Imgur</li>
+      <li>Imgur</li>
+      <li>Instagram</li>
+      <li>Lockerz</li>
+      <li>Path</li>
+      <li>Picplz</li>
+      <li>Skitch</li>
+      <li>Twitpic</li>
+      <li>Twitter</li>
+      <li>YFrog</li>
+    </ul>
+
+    <h3>The <code>/providers</code> endpoint</h3>
+    <p>
+      Noembed provides <a href="https://noembed.com/providers">an endpoint</a> that returns the
+      current list of supported sites. The response is a
+      JSON list with the site name and URL patterns. This can be used to automate testing if a URL is
+      supported by Noembed without making an HTTP request.
+    </p>
+
+    <h2>Who is using Noembed?</h2>
+    <p><a href="mailto:lee@noembed.com">Let us know</a> if you're using noembed in your project!</p>
+    <ul>
+      <li><a href="http://arstechnica.com">Ars Technica</a></li>
+      <li><a href="http://www.usealice.org">Alice &ndash; web-based IRC client</a></li>
+      <li><a href="http://status.net">StatusNet &ndash; private social network</a></li>
+      <li><a href="http://www.metrotwit.com">MetroTwit &ndash; Windows Twitter client</a></li>
+      <li><a href="http://redditenhancementsuite.com/">Reddit Enhancement Suite</a></li>
+    </ul>
+
+    <h2>Development</h2>
+    <p>
+      All the source code for Noembed is <a href="http://www.github.com/leedo/noembed">
+      on github</a>. Patches are accepted to add new services.
+    </p>
+
+    <h2>Similar sites</h2>
+    <p>
+      <a href="http://oohembed.com/">Oohembed</a> was a very similar service. It even
+      acts as a gateway to non-oEmbed enabled sites like noembed. The main limitation that
+      I encountered was its lack of a guaranteed <code>html</code> field.
+    </p>
+    <p>
+      <a href="http://embed.ly/">embed.ly</a>. I have not tried this service, but it
+      lists support for hundreds of sites. Unfortunately, you can not add your own providers,
+      so you are limited to what they support. Oohembed users are now redirected to embed.ly.
+    </p>
+
+    <p id="footer">&copy; 2016 Lee Aylward &mdash; Hosting provided by <a href="https://fastly.com">Fastly</a></p>
+    </div>
+
+    <a href="https://github.com/leedo/noembed"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-3895961-6']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </body>
+</html>

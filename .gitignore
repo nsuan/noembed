@@ -1,4 +1,3 @@
-META.yml
-Makefile
-*.swp
-*/.DS_Store
+share/twitter_cred.json
+share/aws_cred.json
+local/
